@@ -2,22 +2,13 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const base = require('./webpack.config.base.js');
+
 module.exports = {
+    ...base,
     mode: 'production',
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: './dist',
-    },
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[contenthash].js'
-    },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: "詹杰",
-            template: "./src/asset/index.html"
-        }),
+        ...base.plugins,
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // all options are optional
@@ -28,6 +19,7 @@ module.exports = {
     ],
     module: {
         rules: [
+            ...base.module.rules,
             {
                 test: /\.css$/i,
                 use: [

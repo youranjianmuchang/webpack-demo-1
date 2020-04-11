@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{9:function(o,n,s){"use strict";s.r(n);const c={lazy:()=>{console.log("这是一个懒加载")}};n.default=c}}]);
